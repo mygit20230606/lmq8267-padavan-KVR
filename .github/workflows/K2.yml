@@ -39,10 +39,10 @@ jobs:
         mkdir -p /opt/images/
         
         ##### 修改内存空间100M为120M、storage空间20M为21M,21*1024*1024=22020096=0x1500000
-        #sed -i 's/0x1400000/0x800000/g' /opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config
-        #sed -i 's/size_etc="20M"/size_etc="8M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
-        #sed -i 's/size_tmp="100M"/size_tmp="50M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
-        #sed -i 's/mtd_part_size=20971520/mtd_part_size=8388608/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
+        sed -i 's/0x1400000/0x800000/g' /opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config
+        sed -i 's/size_etc="20M"/size_etc="8M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
+        sed -i 's/size_tmp="100M"/size_tmp="50M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
+        sed -i 's/mtd_part_size=20971520/mtd_part_size=8388608/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
     - name: Build Firmware
       env:
         TNAME: PSG1218
