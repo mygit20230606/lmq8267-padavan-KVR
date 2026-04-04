@@ -1,7 +1,7 @@
 #修改40行的TNAME: ZTE_E8820S 中的ZTE_E8820S为你需要编译的型号，注意名称要与trunk/configs/templates/目录下的名字相同
 name: K2
 
-于: 
+on: 
   workflow_dispatch:
 
 #设置仓库的读写权限
