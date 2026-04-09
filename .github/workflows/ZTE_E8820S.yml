@@ -24,6 +24,7 @@ jobs:
         sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
         cpio git python3-docutils gettext automake autopoint texinfo build-essential help2man \
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
+        sudo timedatectl set-timezone Asia/Shanghai
     - name: Install UPX
       uses: crazy-max/ghaction-upx@v3
       with:
@@ -38,11 +39,11 @@ jobs:
         sh dl_toolchain.sh
         mkdir -p /opt/images/
         
-        ##### 修改内存空间100M为120M、storage空间20M为21M,21*1024*1024=22020096=0x1500000
-        #sed -i 's/0x1400000/0x1500000/g' /opt/rt-n56u/trunk/configs/boards/ZTE_E8820S/kernel-3.4.x.config
-        #sed -i 's/size_etc="20M"/size_etc="21M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
-        #sed -i 's/size_tmp="100M"/size_tmp="120M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
-        #sed -i 's/mtd_part_size=20971520/mtd_part_size=22020096/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
+        ##### 修改storage空间20M 20*1024*1024=20971520=0x1400000,tmp空间为100M
+        sed -i 's/0x0400000/0x1400000/g' /opt/rt-n56u/trunk/configs/boards/ZTE_E8820S/kernel-3.4.x.config
+        sed -i 's/size_etc="6M"/size_etc="20M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
+        sed -i 's/size_tmp="24M"/size_tmp="100M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
+        sed -i 's/mtd_part_size=65536/mtd_part_size=20971520/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
     - name: Build Firmware
       env:
         TNAME: ZTE_E8820S
