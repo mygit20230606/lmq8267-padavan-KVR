@@ -41,7 +41,7 @@ jobs:
 
         ##### 修改storage空间7.5M 7.5*1024*1024=7864320=0x780000,tmp空间为40M
         sed -i 's/0x80000/0x780000/g' /opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config
-        sed -i 's/size_etc="20M"/size_etc="7.5M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
+        sed -i 's/size_etc="6M"/size_etc="7.5M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
         sed -i 's/size_tmp="24M"/size_tmp="40M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
         sed -i 's/mtd_part_size=65536/mtd_part_size=7864320/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
     - name: Build Firmware
