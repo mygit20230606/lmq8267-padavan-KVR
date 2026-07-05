@@ -39,7 +39,7 @@ jobs:
         mkdir -p /opt/images/
 
         ##### 修改storage空间7M 7*1024*1024=7340032=0x700000,tmp空间为40M
-        sed -i 's/0x80000/0x700000/g' /opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config
+        sed -i 's/SIZ=0x80000/SIZ=0x700000/g' /opt/rt-n56u/trunk/configs/boards/K2P/kernel-3.4.x-5.0.config
         sed -i 's/size_etc="6M"/size_etc="7M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
         sed -i 's/size_tmp="24M"/size_tmp="40M"/g' /opt/rt-n56u/trunk/user/scripts/dev_init.sh
         sed -i 's/mtd_part_size=65536/mtd_part_size=7340032/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
